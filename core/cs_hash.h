@@ -13,9 +13,11 @@
 
 #include "caesar.h"
 
+#define cs_hash_size(hash) ((hash)->elem_count)
+
 typedef struct   cs_hash_s   cs_hash_t;
 typedef struct   cs_bucket_s cs_bucket_t;
-typedef uint32_t cs_hash_key_t;
+typedef uint64_t cs_hash_key_t;
 
 typedef void (*cs_hash_free_func_t)(void *data);
 typedef int  (*cs_hash_cmp_func_t)(const void *data1, const void* data2, size_t n);
@@ -110,4 +112,13 @@ void* cs_hash_search(cs_hash_t *hash, void* key, uint32_t key_len);
  */
 void cs_hash_free(cs_hash_t *hash);
 
+/** 
+ * 
+ * 
+ * @param hash 
+ * @param new_size 
+ * 
+ * @return 
+ */
+cs_bool cs_hash_resize(cs_hash_t* hash, uint32_t new_size);
 #endif

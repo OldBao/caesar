@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 
-#define FATAL(msg)   printf("fatal: %s\n", msg)
-#define WARNING(msg) printf("warning: %s\n", msg)
-#define NOTICE(msg)  printf("notice: %s\n", msg)
-
+#define CS_FATAL(msg,   arg...)   printf("fatal: " msg "\n", ##arg)
+#define CS_WARNING(msg, arg...)   printf("warning" msg "\n", ##arg)
+#define CS_NOTICE(msg,  arg...)   printf("notice:" msg "\n", ##arg)
+#define CS_DEBUG(msg,   arg...)   printf("debug:"  msg "\n", ##arg)
+#define CS_TRACE(msg,   arg...)   printf("trace:"  msg "\n", ##arg)
 #endif
