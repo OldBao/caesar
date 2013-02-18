@@ -18,7 +18,7 @@ struct cs_listener_s {
 
 cs_listener_t* cs_listener_new();
 cs_listener_t* cs_listen(cs_listener_t *listener);
-cs_listener_t* cs_accept_conn(cs_listener_t *listener);
+cs_conn_t* cs_accept_conn(cs_listener_t *listener);
 cs_listener_t* cs_listener_free(cs_listener_t* listener);
 
 #endif

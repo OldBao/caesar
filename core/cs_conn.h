@@ -4,19 +4,19 @@
 #include "caesar.h"
 
 typedef struct cs_conn_s cs_conn_t;
+typedef struct cs_conn_handler_s cs_conn_handler_t;
 
 struct cs_conn_s {
-  int sockfd;
+  int fd;
   struct sockaddr_info *remote_addr;
-
+    
   int blocking:1;
 
-  cs_buffer_t *recv_buffer;
-  cs_buffer_t *send_buffer;
+  cs_bool (*cs_read_handler)(cs_conn_t);
+  cs_bool (*cs_write_handler)(cs_conn_t *buffer);
 };
 
-cs_conn_t* conn_new();
-cs_conn_t* conn_shutdown();
-cs_conn_t* conn_release();
-cs_conn_t* conn_send(char *packet, size_t packet_len);
+cs_conn_t* cs_conn_new();
+void cs_conn_shutdown(cs_conn_t *conn);
+void cs_conn_release(cs_conn_t *conn);
 #endif
