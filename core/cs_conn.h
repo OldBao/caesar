@@ -12,8 +12,8 @@ struct cs_conn_s {
     
   int blocking:1;
 
-  cs_bool (*cs_read_handler)(cs_conn_t);
-  cs_bool (*cs_write_handler)(cs_conn_t *buffer);
+  cs_bool (*cs_read_handler)(cs_conn_t *);
+  cs_bool (*cs_write_handler)(cs_conn_t *);
 };
 
 cs_conn_t* cs_conn_new();

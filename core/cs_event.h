@@ -25,25 +25,24 @@ struct cs_event_cycle_s {
   cs_event_op_t    event_ops;
   
   //use for timeout event record
-  cs_timer_t       *timer;
+  cs_timer_t      *timer;
 
   //use for io event
-  cs_queue_t       **event_queue;
+  cs_queue_t     **event_queue;
 
-  cs_listener_t    *listener;
+  cs_listener_t   *listener;
 };
 
 #define CS_EVENT_ADD 0x01
 #define CS_EVENT_MOD 0x02
 #define CS_EVENT_DEL 0x04
 
-enum cs_event_type {CS_LISTEN, CS_NET_IO, CS_TIMEOUT};
+enum cs_event_type {CS_LISTEN, CS_NET_IO};
 struct cs_event_s {
   cs_event_type type;
   union {
 	cs_event_listen  listener;
 	cs_event_io      io;
-	cs_event_timeout timeout;
-  }u;
+  }e;
 };
 #endif
